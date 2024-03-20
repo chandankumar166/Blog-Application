@@ -11,4 +11,10 @@ const signinSchema = zod.object({
     password: zod.string()
 })
 
-module.exports = {signupSchema, signinSchema}
+const postSchema = zod.object({
+    title: zod.string(),
+    content: zod.string(),
+    category: zod.string().optional()
+})
+
+module.exports = {signupSchema, signinSchema, postSchema}

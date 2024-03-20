@@ -47,11 +47,14 @@ const signin = async (req, res, next) => {
             userId: validUser._id,
             isAdmin: validUser.isAdmin
         }, process.env.JWT_SECRET);
-        const {password: pass, ...rest} = validUser._doc;
+        // const {password: pass, ...rest} = validUser._doc;
 
         return res.status(200).cookie('access_token', token, {
             httpOnly: true
-        }).json(rest);
+        }).json(
+            // rest
+            {username: validUser.username, email: validUser.email, userId: validUser._id,isAdmin: validUser.isAdmin}
+            );
     }
     catch (error) {
         next(error);

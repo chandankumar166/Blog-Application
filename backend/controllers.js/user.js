@@ -82,4 +82,15 @@ const getUsers = async (req, res, next) => {
     }
 }
 
-module.exports = {updateUser, deleteUser, signout, getUsers};
+const getUser = async (req, res, next) => {
+    const userId = req.params.userId;
+    try {
+        const user = await User.findOne({_id: userId},{password: false})
+        return res.status(200).json(user);
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+module.exports = {updateUser, deleteUser, signout, getUsers, getUser};

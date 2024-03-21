@@ -17,4 +17,10 @@ const postSchema = zod.object({
     category: zod.string().optional()
 })
 
-module.exports = {signupSchema, signinSchema, postSchema}
+const commentSchema = zod.object({
+    content: zod.string(),
+    postId: zod.string(),
+    userId: zod.string(),
+})
+
+module.exports = {signupSchema, signinSchema, postSchema, commentSchema}

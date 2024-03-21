@@ -5,6 +5,7 @@ const {userRouter} = require('./routes/user');
 const {authRouter} = require('./routes/auth');
 const cookieParser = require('cookie-parser');
 const {postRouter} = require('./routes/post');
+const {commentRouter} = require('./routes/comment');
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cookieParser())
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter)
 app.use('/api/post', postRouter)
+app.use('/api/comment', commentRouter);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

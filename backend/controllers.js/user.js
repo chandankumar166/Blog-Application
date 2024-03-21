@@ -29,7 +29,7 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
-    if (req.user.userId !== req.params.userId) {
+    if (!req.user.isAdmin || req.user.userId !== req.params.userId) {
         return next(errorHandler(403, 'Unauthorized'));
     }
     try {

@@ -84,4 +84,14 @@ const editComment = async (req, res, next) => {
 
 };
 
-module.exports = {createComment, getComments, likeComment, editComment};
+const deleteComment = async (req, res, next) => {
+    try {
+        const commentId = req.params.commentId;
+        await Comment.findByIdAndDelete({_id: commentId})
+        return res.status(200).json(deleteComment)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {createComment, getComments, likeComment, editComment, deleteComment};
